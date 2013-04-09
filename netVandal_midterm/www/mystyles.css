@@ -1,0 +1,132 @@
+	@font-face {
+    	font-family: HelveticaMdCn;
+    	src: url(http://www.trytobegood.com/browser/images/Helvetica-MdCn.otf);
+    	font-weight:400;
+	}
+
+	#top-content {
+		
+		width: 100%;
+		height: 100%;
+		
+	}
+
+	img.logo {
+		width: 300px;
+	}
+
+
+input:focus {
+	border:none;
+}
+
+
+.draggable{ 
+	background: url('http://trytobegood.com/dynamicinterfaces/bubble1.png');
+	position: absolute;
+	z-index: 100000000000000;
+	top:0;
+	right:0;
+	color: #000;
+	width: 172px; 
+	height: 100px; 
+	margin: 0 0 10px 0;
+	opacity: 0.95; 
+}
+
+.draggable2 {
+	background: url('http://trytobegood.com/dynamicinterfaces/bubble2.png');
+	position: absolute;
+	z-index: 100000000000000;
+	top:0;
+	right:0;
+	color: #000;
+	width: 172px; 
+	height: 100px; 
+	margin: 0 0 10px 0;
+	opacity: 0.95; 
+
+}
+
+.draggable3 {
+	background: url('http://trytobegood.com/dynamicinterfaces/bubble3.png');
+	position: absolute;
+	z-index: 100000000000000;
+	top:0;
+	right:0;
+	color: #000;
+	width: 172px; 
+	height: 100px; 
+	margin: 0 0 10px 0;
+	opacity: 0.95; 
+
+}
+
+.draggable4 {
+	background: url('http://trytobegood.com/dynamicinterfaces/bubble4.png');
+	position: absolute;
+	z-index: 100000000000000;
+	top:0;
+	right:0;
+	color: #000;
+	width: 172px; 
+	height: 100px; 
+	margin: 0 0 10px 0;
+	opacity: 0.95; 
+
+}
+
+#netVandalBox {
+	position:absolute;
+	top: 0;
+	left:0;
+	z-index: 1000000000;
+	width: 100%;
+	height: 35px;
+	background: #FF003C;
+	color:#fff;
+	font-size: 24px;
+
+
+}
+
+#netVandalBox-content {
+	width: 95%;
+	margin: 10px auto;
+	text-align:center;
+}
+
+#netVandalBox h2 {
+	font-family: HelveticaMdCn;
+	font-size: 26px;
+	color:#fff;
+	text-transform: uppercase;
+	float: center;
+	margin:-3px 5px;
+
+	
+}
+
+#hideMe {
+	display:none;
+}
+
+input.commentBox1, input.commentBox2, input.commentBox3, input.commentBox4 {
+	position:relative;
+	background:none;
+	width: 172px;
+	height: 50px;
+	/*padding-bottom: 50px;*/
+	border: none;
+	font-family: HelveticaMdCn !important;
+	font-size: 16px;
+	padding-left:10px;
+}
+
+input.doSetItem1, input.doSetItem2, input.doSetItem3, input.doSetItem4 {
+	margin-top: 30px;
+	margin-left: 117px;
+	border: 1px solid black;
+	background:white;
+
+}

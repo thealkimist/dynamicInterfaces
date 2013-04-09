@@ -1,0 +1,24 @@
+  {
+  "name": "Extension",
+  "version": "0",
+  "description": "",
+  "browser_action": {
+      "default_icon": "icon.png",
+      "default_popup": "popup.html"
+   },
+  "manifest_version": 2,
+  "permissions": ["tabs", "http://127.0.0.1:8080/*"],
+    "content_scripts": [
+    {
+        "matches": [ "http://127.0.0.1:8080/*"],
+        "js": ["jquery.min.js", "myScript.js", "jquery-ui/development-bundle/ui/jquery.ui.core.js", "jquery-ui/development-bundle/ui/jquery.ui.widget.js", "jquery-ui/development-bundle/ui/jquery.ui.mouse.js", "jquery-ui/development-bundle/ui/jquery.ui.draggable.js"],
+        "all_frames": true
+    }
+  ],
+  "web_accessible_resources": ["mystyles.css"]
+}
+
+/*
+can also do this in the permissions part:
+http://localhost:8080/*
+*/

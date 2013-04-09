@@ -1,0 +1,315 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="mystyles.css">
+	<meta charset="utf-8" />
+  <title>Net Vandalism</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+  <script>
+  var ReadxPos = readCookie('Cookie_Toolbar_PosX')
+       var ReadyPos = readCookie('Cookie_Toolbar_PosY')
+       var ReadxPos2 = readCookie('Cookie_Toolbar_PosX2')
+       var ReadyPos2 = readCookie('Cookie_Toolbar_PosY2')
+       var ReadxPos3 = readCookie('Cookie_Toolbar_PosX3')
+       var ReadyPos3 = readCookie('Cookie_Toolbar_PosY3')
+       var ReadxPos4 = readCookie('Cookie_Toolbar_PosX4')
+       var ReadyPos4 = readCookie('Cookie_Toolbar_PosY4')
+       var storeInput1 = readCookie('Cookie_Toolbar_input1')
+       var storeInput2 = readCookie('Cookie_Toolbar_input2')
+       var storeInput3 = readCookie('Cookie_Toolbar_input3')
+       var storeInput4 = readCookie('Cookie_Toolbar_input4')
+       $('input.commentBox1').val(storeInput1);
+       $('input.commentBox2').val(storeInput2);
+       $('input.commentBox3').val(storeInput3);
+       $('input.commentBox4').val(storeInput4);
+
+       $( ".draggable" ).css("margin-left", ReadxPos + 'px');
+       $( ".draggable" ).css("margin-top", ReadyPos + 'px');
+       $( ".draggable2" ).css("margin-left", ReadxPos2 + 'px');
+       $( ".draggable2" ).css("margin-top", ReadyPos2 + 'px');
+       $( ".draggable3" ).css("margin-left", ReadxPos3 + 'px');
+       $( ".draggable3" ).css("margin-top", ReadyPos3 + 'px');
+       $( ".draggable4" ).css("margin-left", ReadxPos4 + 'px');
+       $( ".draggable4" ).css("margin-top", ReadyPos4 + 'px');
+
+   function createCookie(name,value,days) {
+               if (days) {
+                       var date = new Date();
+                       date.setTime(date.getTime()+(days*24*60*60*1000));
+                       var expires = "; expires="+date.toGMTString();
+               }
+               else var expires = "";
+               document.cookie = name+"="+value+expires+"; path=/";
+       }
+
+       function readCookie(name) {
+               var nameEQ = name + "=";
+               var ca = document.cookie.split(';');
+               for(var i=0;i < ca.length;i++) {
+                       var c = ca[i];
+                       while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                       if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+               }
+               return null;
+       }
+
+       function eraseCookie(name) {
+               createCookie(name,"",-1);
+       }
+    </script>
+</head>
+
+
+
+<body>
+<div class="draggable">
+	<form name=editor>
+		<input name=name class="commentBox1" value="The solution is simple. ">
+		<input type=button value="SUBMIT" class="doSetItem1">
+	</form>
+</div>
+
+ <div class="draggable2">
+	<form name=editor>
+		<input name=name class="commentBox2" value="FOLLOW THE MONEY....!!!">
+		<input type=button value="SUBMIT" class="doSetItem2">
+</div>
+
+<div class="draggable3">
+	<form name=editor>
+		<input name=name class="commentBox3" value ="No surprises here.">
+		<input type=button value="SUBMIT" class="doSetItem3">
+	</form>
+</div>
+
+<div class="draggable4">
+	<form name=editor>
+		<input name=name class="commentBox4" value="Stupid, stupid, stupid.">
+		<input type=button value="SUBMIT" class="doSetItem4">
+	</form>
+</div>
+
+<div id="netVandalBox">
+	<div id="netVandalBox-content">
+		<h2>Net Vandal is turned on </h2>
+	</div>
+</div>
+
+
+  <script>
+var socket = io.connect();
+
+$(function() {
+  
+ 
+ $('.draggable').draggable({cursor:"move", cursorAt: { top:56, left: 56}});
+  
+  	socket.on('update_position', function (data) {
+      var x = data.x;
+      var y = data.y;
+      console.log("draggable" + x + ", " + y);
+  	  $(".draggable").css('left', data.x).css('top', data.y);
+		//});
+	});
+
+ 	$(".draggable").draggable().mousemove(function(){
+			var coord = $(this).position();
+			socket.emit('receive_position', { x: coord.left, y: coord.top });
+	});	
+
+
+ $('.draggable2').draggable({cursor:"move", cursorAt: { top:56, left: 56}});
+  
+  	socket.on('update_position2', function (data) {
+      var x = data.x;
+      var y = data.y;
+      console.log("draggable2" + x + ", " + y);
+  	  $(".draggable2").css('left', data.x).css('top', data.y);
+		//});
+	});
+
+ 	$(".draggable2").draggable().mousemove(function(){
+			var coord = $(this).position();
+			socket.emit('receive_position2', { x: coord.left, y: coord.top });
+	});
+
+ $('.draggable3').draggable({cursor:"move", cursorAt: { top:56, left: 56}});
+  
+  	socket.on('update_position3', function (data) {
+      var x = data.x;
+      var y = data.y;
+      console.log("draggable3" + x + ", " + y);
+  	  $(".draggable3").css('left', data.x).css('top', data.y);
+		//});
+	});
+
+ 	$(".draggable3").draggable().mousemove(function(){
+			var coord = $(this).position();
+			socket.emit('receive_position3', { x: coord.left, y: coord.top });
+	});	
+
+ $('.draggable4').draggable({cursor:"move", cursorAt: { top:56, left: 56}});
+  
+  	socket.on('update_position4', function (data) {
+      var x = data.x;
+      var y = data.y;
+      console.log("draggable4" + x + ", " + y);
+  	  $(".draggable4").css('left', data.x).css('top', data.y);
+		//});
+	});
+
+ 	$(".draggable4").draggable().mousemove(function(){
+			var coord = $(this).position();
+			socket.emit('receive_position4', { x: coord.left, y: coord.top });
+	});
+});
+
+	$(function() {
+
+		$("input.doSetItem1").click(function(){ 
+			$("input.commentBox1").keyup(function () {
+				var value = $('input.commentBox1').val();
+				createCookie('Cookie_Toolbar_input1', value, 0)
+			}).keyup();
+		});
+
+		$("input.doSetItem2").click(function(){ 
+			$("input.commentBox2").keyup(function () {
+				var value = $('input.commentBox2').val();
+				createCookie('Cookie_Toolbar_input2', value, 0)
+			}).keyup();
+		});
+
+
+		$("input.doSetItem3").click(function(){ 
+			$("input.commentBox3").keyup(function () {
+				var value = $('input.commentBox3').val();
+				createCookie('Cookie_Toolbar_input3', value, 0)
+			}).keyup();
+		});
+
+		$("input.doSetItem4").click(function(){ 
+			$("input.commentBox4").keyup(function () {
+				var value = $('input.commentBox4').val();
+				createCookie('Cookie_Toolbar_input4', value, 0)
+			}).keyup();
+		});
+
+	    $( ".draggable" ).draggable(
+	        {
+	            drag: function(){
+	                var offset = $(this).offset();
+	                var xPos = offset.left;
+	                var yPos = offset.top;
+	            },
+
+	            stop: function(event, ui) {
+	              var offset = $(this).offset();
+	              var xPos = offset.left;
+	              var yPos = offset.top;
+	              createCookie('Cookie_Toolbar_PosX', xPos, 0)
+	              createCookie('Cookie_Toolbar_PosY', yPos, 0)
+	            }
+
+	        }
+
+	  );
+
+
+	  $( ".draggable2" ).draggable(
+	        {
+	            drag: function(){
+	                var offset = $(this).offset();
+	                var xPos = offset.left;
+	                var yPos = offset.top;
+	                console.log(xPos);
+	                console.log(yPos);
+	            },
+
+	            stop: function(event, ui) {
+	              var offset = $(this).offset();
+	              var xPos = offset.left;
+	              var yPos = offset.top;
+	              createCookie('Cookie_Toolbar_PosX2', xPos, 0)
+	              createCookie('Cookie_Toolbar_PosY2', yPos, 0)
+	            }
+
+	        }
+
+	  );
+
+	  $( ".draggable3" ).draggable(
+	        {
+	            drag: function(){
+	                var offset = $(this).offset();
+	                var xPos = offset.left;
+	                var yPos = offset.top;
+	                console.log(xPos);
+	                console.log(yPos);
+	            },
+
+	            stop: function(event, ui) {
+	              var offset = $(this).offset();
+	              var xPos = offset.left;
+	              var yPos = offset.top;
+	              createCookie('Cookie_Toolbar_PosX3', xPos, 0)
+	              createCookie('Cookie_Toolbar_PosY3', yPos, 0)
+	            }
+
+	        }
+
+	  );
+
+	  $( ".draggable4" ).draggable(
+	        {
+	            drag: function(){
+	                var offset = $(this).offset();
+	                var xPos = offset.left;
+	                var yPos = offset.top;
+	                console.log(xPos);
+	                console.log(yPos);
+	            },
+
+	            stop: function(event, ui) {
+	              var offset = $(this).offset();
+	              var xPos = offset.left;
+	              var yPos = offset.top;
+	              createCookie('Cookie_Toolbar_PosX4', xPos, 0)
+	              createCookie('Cookie_Toolbar_PosY4', yPos, 0)
+	            }
+
+	        }
+
+	  );
+
+	});
+  </script>
+
+
+<div>
+<img src="times.jpg" class="center"></img>
+</div>
+
+
+  <style>
+    img.center{
+      display: block; 
+      margin-left: auto; 
+      margin-right: auto;
+    }
+    div#box{
+    	background:rgba(255,0,0,0.50);
+    	width: 150px; 
+    	height: 150px; 
+    	padding: 0.5em;
+    }
+  </style>
+ 
+ 
+</body>
+
+
+</html>

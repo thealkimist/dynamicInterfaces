@@ -1,0 +1,57 @@
+	@font-face {
+    	font-family: HelveticaMdCn;
+    	src: url(http://www.trytobegood.com/browser/images/Helvetica-MdCn.otf);
+    	font-weight:400;
+	}
+
+	#top-content {
+		
+		width: 100%;
+		height: 100%;
+		
+	}
+
+	img.logo {
+		width: 300px;
+	}
+
+
+.draggable, .draggable2 { 
+	position: absolute;
+		z-index: 1000;
+		top:0;
+		left:0;
+	font-family: HelveticaMdCn;
+	color: #000;
+	width: 100px; height: 100px; padding: 0.5em; float: left; margin: 0 10px 10px 0; 
+}
+
+td, th {
+      font-family: monospace;
+      padding: 4px;
+      background-color: #ccc;
+    }
+    #hoge {
+      border: 1px dotted blue;
+      padding: 6px;
+      background-color: #ccc;
+      margin-right: 50%;
+    }
+    #items_table {
+      border: 1px dotted blue;
+      padding: 6px;
+      margin-top: 12px;
+      margin-right: 50%;
+    }
+    #items_table h2 {
+      font-size: 18px;
+      margin-top: 0px;
+      font-family: sans-serif;
+    }
+    label {
+      vertical-align: top;
+    }
+
+#hideMe {
+	display:none;
+}
